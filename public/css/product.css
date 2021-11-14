@@ -1,0 +1,25 @@
+.productList {
+  height: 120px;
+  text-align: center;
+  align-items: center;
+  border: 1px solid #bdbdbd !important; }
+  .productList img {
+    height: 100px;
+    width: auto;
+    border-radius: 50%; }
+  .productList:hover {
+    cursor: pointer; }
+  .productList label {
+    font-weight: bold;
+    font-size: 20px; }
+
+.listDiv {
+  width: 100%;
+  height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 5px; }
+
+.storeTitle {
+  font-weight: bold;
+  font-size: 26px; }

@@ -1,0 +1,30 @@
+.inner-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 1px;
+    background-color: #8C9A57;
+}
+.imgDiv{
+    height: 300px;
+}
+.imgDiv > img{
+    height: 100%;
+}
+.inner-container > div {
+    background-color: white;
+    text-align: left;
+    padding: 20px 10px;
+    font-size: 1em;
+}
+
+.inner_product_item1 {
+    grid-column: 1 / 2;
+}
+
+.inner_product_item2 {
+    grid-column: 2 / 3;
+}
+
+.inner_product_item3 {
+    grid-column: 1 / span 2;
+}

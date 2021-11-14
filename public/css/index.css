@@ -1,0 +1,59 @@
+span, label, input::placeholder {
+  font-family: 'Garamond', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; }
+
+.clr {
+  color: red;
+  background-color: rebeccapurple; }
+
+.center {
+  margin: auto;
+  position: relative;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.siteLoginBtn {
+  display: inline-block;
+  background: white;
+  color: #444;
+  width: 100%;
+  height: 50px;
+  border-radius: 5px;
+  border: 2px solid #0f0f0f;
+  box-shadow: 1px 1px 1px grey;
+  white-space: nowrap;
+  margin: 3px; }
+  .siteLoginBtn:hover {
+    cursor: pointer; }
+  .siteLoginBtn div {
+    width: max-content; }
+
+.form-control.bold {
+  border: 2px solid black; }
+
+.toggle-btn {
+  border-radius: 0 !important;
+  border: 0 !important; }
+
+span.google {
+  background: url("/image/google-color.png") transparent no-repeat;
+  display: inline-block;
+  background-size: cover;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px; }
+
+span.facebook {
+  background: url("/image/facebook.png") transparent no-repeat;
+  display: inline-block;
+  background-size: cover;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px; }
+
+span.buttonText {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: bold;
+  /* Use the Roboto font that is loaded in the <head> */ }

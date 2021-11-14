@@ -1,0 +1,518 @@
+
+ @import url(//db.onlinewebfonts.com/c/0801c08e5412f54e4b4e9ad146d83a12?family=Ink+Free);
+
+ /* Default StylingW3C-styles */
+ html,
+ body {
+	 width: 100%;
+	 height: 95vh;
+	 margin: 0 auto;
+	 position: relative;
+	 /* text-align: center; */
+	
+ }
+ 
+ main {
+	 height: 100%;
+	 text-align: center;	
+ }
+ 
+ header {
+	 position: relative;
+	 max-height: 10vh;
+	 background-color: white;
+ }
+ 
+ /* footer {
+	 margin-bottom: 0;
+	 background-color: #8C9A57;
+	 color: white;
+	 height: 30px;
+	 padding: 5px;
+	 font-size: 0.8em;
+	 text-transform: uppercase;
+	 vertical-align: middle;
+	 text-align: center;
+ } */
+ footer {
+	background-color: #8C9A57;
+	color: white;
+	height: 30px;
+	padding: 5px;
+	font-size: 0.8em;
+	text-transform: uppercase;
+	vertical-align: middle;
+	text-align: center;
+}
+ h3{
+	 font-size: 24px;
+	 font-family: 'Ink free', 'Segoe Script', 'MV Boli', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+ 
+ .bar,
+ #focal-point,
+ #grid_container,
+ footer,
+ main {
+	 clear: both;
+ }
+ 
+ a {
+	 text-decoration: none;
+ }
+ 
+ @font-face {font-family: "Ink Free"; 
+	 src: url("//db.onlinewebfonts.com/t/0801c08e5412f54e4b4e9ad146d83a12.eot"); 
+	 src: url("//db.onlinewebfonts.com/t/0801c08e5412f54e4b4e9ad146d83a12.eot?#iefix") 
+	 format("embedded-opentype"), url("//db.onlinewebfonts.com/t/0801c08e5412f54e4b4e9ad146d83a12.woff2") 
+	 format("woff2"), url("//db.onlinewebfonts.com/t/0801c08e5412f54e4b4e9ad146d83a12.woff") 
+	 format("woff"), url("//db.onlinewebfonts.com/t/0801c08e5412f54e4b4e9ad146d83a12.ttf") 
+	 format("truetype"), url("//db.onlinewebfonts.com/t/0801c08e5412f54e4b4e9ad146d83a12.svg#Ink Free") 
+	 format("svg"); 
+ }
+ 
+ 
+ 
+ /* the header links */
+ /* =================================================================================== */
+ .bar-link {
+	 float: right;
+	 margin: 20px 30px 0px 30px;	
+	 color: black;
+	 font-size: 20px;
+	 font-family: 'Ink free', 'Segoe Script', 'MV Boli', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+ 
+ .bar-link:hover{
+	 color: #8C9A57;
+	 text-decoration: underline;
+ }
+ /* the header links end */
+ 
+ 
+ .main_background {
+	background: no-repeat center/100% url(/image/main_background.png);
+	height: 85vh;
+	background-repeat: no-repeat;
+	background-size: 100%; 
+ }
+ 
+ /* search bar */
+ /* ============================================================================================= */
+ #search_bar {
+	 float: right;
+	 margin: 11px 25px;
+	 height: 34px;
+ }
+ 
+ input {
+	 width: 200px;
+	 font-size: 18px;
+	 padding: 5px;
+	 font-family: 'Garamond', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }
+ 
+ .keywordBox {
+	 border-radius: 5px 0 0 5px;
+	 border: 3px solid rgb(58, 117, 161);
+	 border-right: 0;
+	 height: 20px;
+	 float: left;
+	 /* margin-right: -4px; */
+ }
+ 
+ ::placeholder {
+	 font-size: 17px;
+	 font-family: 'Garamond', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	 font-weight: bold;
+	 border-radius: 5px;
+ }
+ 
+ button {
+	 border: 3px solid rgb(58, 117, 161);
+	 border-radius: 0 5px 5px 0;
+	 background-color: white;
+	 height: 36px;
+ }
+ /* search end */
+ 
+ 
+ #account_name,
+ #identity {
+	 float: right;
+	 margin: 20px 30px 0px 30px;	
+	 color: black;
+	 font-size: 20px;
+	 font-family: 'Ink free', 'Segoe Script', 'MV Boli', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+ 
+ /* this is my main introduction part in my home page */
+ /* ====================================================================== */
+ #focal-point {
+	 width: 100%;
+ }
+ /* focal point in home page end */
+ 
+ 
+ #about_us {
+	 padding: 60px 60px 100px 60px;
+	 background-color: #EBEFCC;
+	 opacity: 75%;
+ }
+ 
+ #contact .row {
+	 margin: 50px;
+ }
+ .centerDiv {
+	margin: auto;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	/* -ms-transform: translate(-50%,-50%);  */
+	transform: translate(-50%,-50%); 
+	width: 98rem;
+	height: 40rem;
+	background-color: white;
+	overflow: hidden;
+	font-family: Arial, Helvetica, sans-serif;
+}
+ #costco_main .row {
+	 margin: 0;
+	 width: 800px;
+	 height: 50px;
+ }
+ 
+ #costco_product_main .row {
+	 margin: 0;
+	 width: 800px;
+	 height: max-content;
+ }
+ 
+ .container  {
+	 height: 40vh;
+ }
+ 
+ .link {
+	 width: 10vh;
+ }
+ 
+ .link :hover {
+	 opacity: 0.3;
+ }
+ 
+ #coop_store {
+	 height: 45vh;
+ }
+ 
+ #coop_store h1 {
+	 font-size: 2em;
+	 margin: 10vh;
+ }
+ 
+ /* grids in my home page */
+ /* ====================================================================== */
+ .coop_img {
+	 width: 80%;
+	 max-width: 200px;
+ }
+ 
+ /* the three white grids end */
+ 
+ 
+ #center-div{
+	 margin: auto;
+	 position: absolute;
+	 width: 80%;
+	 height: 700px;
+	 top: 150px;
+	 background-color: aliceblue;
+ }
+ 
+ /* the first part of "about us" with a group study image */
+ /* ======================================================================== */
+ #study {
+	 /* 	
+	 Available online:
+	 https://static.wixstatic.com/media/05e3dc_1166e6044833437f9fbed91bd3c6e7f4.jpg/v1/fill/w_1470,h_867,al_b,q_85,usm_0.66_1.00_0.01/05e3dc_1166e6044833437f9fbed91bd3c6e7f4.webp
+	 Accessed: 18 Apr 2020 
+	 */
+	 background-image: url(/image/study.jpg);
+	 background-repeat: no-repeat;
+	 background-size: 100% 100%;
+	 color: white;
+	 font-family: 'Ink free', 'Segoe Script', 'MV Boli', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+ }
+ 
+ #study h2 {
+	 padding-top: 50px;
+	 padding-left: 200px;
+	 font-size: 40px;
+	 float: left;
+ }
+ 
+ #study p {
+	 padding-bottom: 30px;
+	 margin: 0;
+	 clear: both;
+ }
+ /* study part end */
+ 
+ 
+ 
+ 
+ /* introduction of our experts */
+ /* ============================================================================== */
+ #board {
+	 /* 	
+	 Available online:
+	 https://pngtree.com/freebackground/fresh-chalkboard-stationery-ad-background_970707.html
+	 Accessed: 18 Apr 2020 
+	 */
+	 background-image: url(/image/board.jpg);
+	 background-repeat: no-repeat;
+	 background-color: white;
+	 background-size: 100%;
+	 color: white;
+	 line-height: 25px;
+ }
+ 
+ #board h3 {
+	 padding: 80px 0 50px 0;
+	 font-size: 32px;
+ }
+ 
+ #experts_img {
+	 width: 70%;
+	 text-align: center;
+	 margin-bottom: 100px;
+ }
+ /* experts end */
+ 
+ 
+ .content {
+    background-color: white;
+    text-align: left;
+    margin: 8%;
+    padding: 15px;
+    padding-top: 4%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    display: inline-block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+ 
+ /* introduction of our institution */
+ /* ========================================================================== */
+ #institution {
+	 /* 	
+	 Available online:
+	 https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v591-mynt-32-handdrawnlightbulbs_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=8caac1cec91acbfa50232776ff21a74f
+	 Accessed: 18 Apr 2020 
+	 */
+	 background-image: url(/image/bulb.png);
+	 background-repeat: no-repeat;
+	 background-color: white;
+	 background-size: 280px;
+	 background-position-x: 50px;
+	 background-position-y: top;
+	 padding:  100px 0;
+ }
+ 
+ #institution h3 {
+	 margin-left: 200px;
+	 width: 50%;
+ }
+ 
+ #institution p{
+	 margin-left: 100px;
+	 text-align: left;
+	 width: 70%;
+	 line-height: 25px;
+	 font-size: 18px;
+ }
+ /* institution end */
+ 
+ 
+ #costco_background {
+	 width: 100%;
+ }
+ 
+ /* all the images */
+ /* ================================================================================ */
+ .logo_img {
+	 width: 15em;
+	 float: left;
+	 padding: 10px;
+	 padding-bottom: 15px;
+ }
+ 
+ #paper_plane_img {
+	 width: 230px;
+	 padding-bottom: 80px;
+ }
+ 
+ .header_plane_img {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 width: 250px;
+	 z-index: -1;
+ }
+ 
+ .bulb_img {
+	 position: absolute;
+	 top: 0px;
+	 left: 750px;
+	 width: 280px;
+	 z-index: -1;
+ }
+ 
+ .animal_img {
+	float: left;
+	height: 300px;
+	 /* left: 0;
+	 width: 15px; */
+ }
+ 
+ #study_img {
+	 position: absolute;
+	 top: 2380px;
+	 left: 20px;
+	 width: 180px;
+ }
+ 
+ .arrow_img {
+	 width: 82px;
+	 padding: 3px;
+ }
+ 
+ .arrow_img:hover{
+	 width: 84px;
+	 padding: 1px;
+ }
+ 
+ .product_img {
+	 width: 30vh;
+ }
+ 
+ 
+ /* img end */
+ 
+ /* this is for about grids */
+ /* ============================================================== */
+ #about_grid_container {
+	 display: grid;
+	 width: 100%;
+	 grid-gap: 10px;
+	 grid-template-columns: 80% auto;
+ }
+ 
+ .side_item {
+	 background-color: lightgray;
+	 color: black;
+	 padding: 30px 50px;
+	 line-height: 28px;
+	 font-size: 18px;
+ }
+ 
+ #institution {
+	 grid-column: 1;
+	 grid-row: 1 / 2;
+ }
+ 
+ #board {
+	 grid-column: 1;
+	 grid-row: 2 / 6;
+	 align-self: stretch;
+ }
+ 
+ #course {
+	 grid-column: 2;
+	 grid-row: 1 ;
+ }
+ 
+ #quiz {
+	 grid-column: 2;
+	 grid-row: 2 / 4;
+ }
+ 
+ #about_quick_link {
+	 grid-column: 2;
+	 grid-row: 4 / 6;
+ }
+ 
+ #about_quick_link a{
+	 color: black;
+ }
+ 
+ #about_quick_link a:hover{
+	 color: rgb(87, 87, 87);
+	 text-decoration: underline;
+ }
+ /* about grids end */
+ 
+ 
+ 
+ /* icons for following us */
+ /* ================================================================= */
+ .fa:hover 
+ {
+	 opacity: 0.7;
+ }
+ 
+ .fa-facebook 
+ {   
+	 padding: 15px;
+	 font-size:30px;
+	 width: 45px;
+	 text-align: center;
+	 text-decoration: none;
+	 margin: 2px 2px;
+	 border-radius: 50%;
+	 background: #3B5998;
+	 color: white;
+ }
+ 
+ .fa-instagram 
+ {   
+	 padding: 15px;
+	 font-size:30px;
+	 width: 45px;
+	 text-align: center;
+	 text-decoration: none;
+	 margin: 2px 2px;
+	 border-radius: 50%;
+	 background: #125688;
+	 color: white;
+ }
+ 
+ .fa-google 
+ {   
+	 padding: 15px;
+	 font-size:30px;
+	 width: 45px;
+	 text-align: center;
+	 text-decoration: none;
+	 margin: 2px 2px;
+	 border-radius: 50%;
+	 background: #dd4b39;
+	 color: white;
+ }
+ /* icons end */
+
+ #paper_plane_img {
+	float: right;
+    min-width: 25vh;
+    width: 18%;
+    position: relative;
+    animation-name: example;
+    animation-duration: 1.8s;
+}
+  
+  @keyframes example {
+    0%   {right:100%; top:30em; opacity: 0;}
+    100%  {right:0%; top:0vh;}	
+  }
+
+  
