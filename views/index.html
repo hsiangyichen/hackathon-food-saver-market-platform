@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Responsive viewport meta tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <meta name="google-signin-client_id"
+        content="704955964578-h12ktncaj45noqmmb3q3hu9vrtkhh5ol.apps.googleusercontent.com">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="js/google.js"></script>
+    <script src="js/normal.js"></script>
+
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v11.0"
+        nonce="BJxM7W7J"></script>
+    <title>綠Pro</title>
+</head>
+
+<body>
+    <!-- LoginModal -->
+    <div style="margin-top: 80px;" class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="loginCustomerBtn" autocomplete="off"
+                        checked>
+                    <label class="btn btn-outline-secondary toggle-btn toggle" for="loginCustomerBtn">顧客</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="loginStoreBtn" autocomplete="off">
+                    <label class="btn btn-outline-secondary toggle-btn" for="loginStoreBtn">合作店家</label>
+                </div>
+                <div class="modal-body">
+                    <div name="siteDiv" style="display: block;">
+                        <!-- google -->
+                        <div id="gSignInWrapper">
+                            <div id="loginGoogleBtn" class="customGPlusSignIn siteLoginBtn">
+                                <div class="center">
+                                    <span class="google mx-auto"></span>
+                                    <span class="buttonText mx-auto googleText">以google帳戶登入</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="name"></div>
+
+                        <script>
+                            startApp();
+                        </script>
+                        <!-- facebook -->
+                        <div>
+                            <div class=" siteLoginBtn" onclick="facebook_login(true)">
+                                <div class="center">
+                                    <span class="facebook mx-auto"></span>
+                                    <span class="buttonText mx-auto facebookText">以Facebook帳戶登入</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin:5px; font-weight:bold">or</div>
+                    </div>
+
+                    <form id="logInForm" class="mb-3 needs-validation" novalidate>
+                        <input type="email" name="email" class="form-control mb-2 bold" placeholder="email" required>
+                        <input type="password" name="password" class="form-control mb-2 bold" placeholder="password"
+                            required>
+                        <button type="submit" class="btn btn-dark w-100 mb-2">登入</button>
+                    </form>
+                    <div style="text-align: center; margin:5px; font-weight:bold">
+                        <span>Not have an account yet?</span>
+                        <span><a href="#" onclick="changeType()">Sign Up</a></span>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- signUpModal -->
+    <div style="margin-top: 80px; " class="modal fade" id="signUpModal" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="customerBtn" autocomplete="off" checked>
+                    <label class="btn btn-outline-secondary toggle-btn toggle" for="customerBtn">顧客</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="storeBtn" autocomplete="off">
+                    <label class="btn btn-outline-secondary toggle-btn" for="storeBtn">合作店家</label>
+                </div>
+                <div class="modal-body">
+                    <div name="siteDiv" style="display: block;">
+                        <!-- google -->
+                        <div id="gSignInWrapper">
+                            <div id="signUpGoogleBtn" class="customGPlusSignIn siteLoginBtn">
+                                <div class="center">
+                                    <span class="google mx-auto"></span>
+                                    <span class="buttonText mx-auto googleText">以google帳戶註冊</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="name"></div>
+
+                        <script>
+                            startApp();
+                        </script>
+
+                        <!-- facebook -->
+                        <div>
+                            <div class=" siteLoginBtn" onclick="facebook_login(false)">
+                                <div class="center">
+                                    <span class="facebook mx-auto"></span>
+                                    <span class="buttonText mx-auto facebookText">以Facebook帳戶註冊</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: center; margin:5px; font-weight:bold">or</div>
+                    </div>
+                    <form id="signUpForm" class="mb-3 needs-validation" novalidate>
+                        <input type="email" name="email" class="form-control mb-2 bold" placeholder="email" required>
+                        <input type="password" name="password" class="form-control mb-2 bold" placeholder="password"
+                            required>
+                        <input type="text" name="name" class="form-control mb-2 bold" placeholder="name" required>
+                        <div name="storeDiv" style="display: none;">
+                            <input type="text" name="address" class="form-control mb-2 bold" placeholder="address"
+                                required>
+                            <input type="text" name="tel" class="form-control mb-2 bold" maxlength="10"
+                                placeholder="tel" required>
+                            <select name="store" class="form-select form-control mb-2 bold" id="store" name="store"
+                                required>
+                                <option value="costco" selected>costco</option>
+                                <option value="sevenEleven">sevenEleven</option>
+                                <option value="family-mart">FamilyMart</option>
+                                <option value="全聯">全聯</option>
+                            </select>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100 mb-2">註冊</button>
+                    </form>
+
+                    <div style="text-align: center; margin:5px; font-weight:bold">
+                        <span>Already have an account?</span>
+                        <span><a href="#" onclick="changeType()">Log in</a></span>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div>
+            <a href="#">
+                <img class="logo_img" alt="logo" src="/image/logo.png">
+            </a>
+            <!--
+                    Available online:
+                    https://www.pinterest.com/pin/ATnC6Tu_-wqojHlwLGb10OH3ri6EJyypKDBFSyw5P8Y1DGfjSIMghzk/
+                    Accessed: 18 Apr 2020
+                -->
+            <a class="bar-link" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Log In/Sign
+                Up</a>
+            <a class="bar-link" href="#about_us">About Us</a> <!-- Add a link to a new page -->
+            <a class="bar-link" href="#store_part">Store</a>
+            <a class="bar-link" href="#">Home</a>
+            <img id="paper_plane_img" class="p-0" alt="paper_plane_img" src="/image/paper_plane.png">
+        </div>
+        <div class="input-group mb-3">
+            <button id="typeMenu" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false" tag="name" >商家名稱</button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" tag="name">商家名稱</a></li>
+                <li><a class="dropdown-item" href="#" tag="address">地址</a></li>
+                <li><a class="dropdown-item" href="#" tag="kind">類別</a></li>
+            </ul>
+            <input class="form-control rounded" list="datalistOptions" id="searchInput"
+                placeholder="Type to search...">
+            <datalist id="datalistOptions">
+                <option value="San Francisco">
+                <option value="New York">
+                <option value="Seattle">
+                <option value="Los Angeles">
+                <option value="Chicago">
+            </datalist>
+            <button class="input-group-text border-0" id="searchBtn">
+                <i class="fa fa-search"></i>
+            </button>
+            <form id="searchForm" action="/productPage" method="POST" style="display: none;">
+                <input type="text" >
+            </form>
+        </div>
+    </header>
+    <main>
+        <div>
+            <img id="focal-point" alt="home_page_background" src="image/home_page_background.png">
+        </div>
+        <div id="coop_store" style="font-family: ‘Noto Sans TC’, sans-serif;">
+            <h1>合作店家</h1>
+            <!-- Contains three parts to briefly explain the sources we have (Learning Center, Experts, Tutors) -->
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <a class="link" href="/storePage/costco">
+                            <img class="coop_img" alt="costco" src="/image/coscto_logo.PNG">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a class="link" href="/storePage/alllink">
+                            <img class="coop_img" alt="全聯"
+                                src="https://scontent-tpe1-1.xx.fbcdn.net/v/t31.18172-8/29744888_1971961839541119_2572139267371021556_o.png?_nc_cat=1&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=slK0l8lVyzwAX_NOWkj&_nc_ht=scontent-tpe1-1.xx&oh=5cdd1347635fea33e0bce8e5a6c2f3b5&oe=60F24D8B">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a class="link" href="/storePage/711">
+                            <img class="coop_img" alt="711" src="/image/711_logo.png">
+                        </a>
+                    </div>
+                    <div class="col">
+                        <a class="link" href="/storePage/family">
+                            <img class="coop_img" alt="family" src="/image/family_logo.jpg">
+                        </a>
+                    </div>
+
+                    <div class="col">
+                        <a class="link" href="/storePage/ok">
+                            <img class="coop_img" alt="ok"
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/OK_Taiwan.svg/225px-OK_Taiwan.svg.png">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="about_us">
+            <section>
+                <h3>About Us</h3>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根據聯合國SDGs目標12:
+                    Responsible Consumption And Production，為了減少生產與供應鏈
+                    上的糧食損失，綠Pro致力於將大賣場或超商的即期食品透明化。藉由顯示各店家即期食品的資訊，
+                    讓有興趣的民眾能夠透過綠Pro知道哪裡有便宜的折價販售即期食品並前去購買，不僅減少食
+                    物浪費，也減少商家損失。
+                </p>
+            </section>
+        </div>
+        <div class="container-fluid" id="contact">
+            <div class="row">
+                <div class="col">
+                    <img class="animal_img" alt="animals" src="image/animals.png">
+                </div>
+                <div class="col">
+                    <h3>Address</h3>
+                    <p>
+                        Phone: (06)2827889<br>Instagram: Green_Pro<br>Facebook: GreenPro@Taiwan<br>Email:
+                        GreenPro@gmail.com
+                    </p>
+                </div>
+                <div class="col">
+                    <h3>Follow Me</h3>
+                    <div class="icon">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-google"></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3>Quick Links</h3>
+                    <hr>
+                    <a href="#">
+                        <p><img class="arrow_img" src="image/arrow.png" alt="arrow"></p>
+                    </a>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+
+        </div>
+        <footer>
+            <div>
+                <p>
+                    &copy; 2021. By Green Pro Inc.
+                </p>
+            </div>
+        </footer>
+    </main>
+
+</body>
+<script>
+    
+    var isLogin = true;
+    changeType = () => {
+        isLogin = !isLogin;
+        if (isLogin) {
+            $('#signUpModal').modal('hide');
+            $('#loginModal').modal('show');
+        } else {
+            $('#signUpModal').modal('show');
+            $('#loginModal').modal('hide');
+        }
+    }
+    $(document).ready(function () {
+        //    $('#loginModal').modal('show');
+        $(".toggle-btn").on('click', (event) => {
+            const forText = event.target.getAttribute('for').toString();
+            console.log(event.target.getAttribute('for'), $('div[name="storeDiv"]').css("display"))
+            if (forText == "storeBtn" || forText == "loginStoreBtn") {
+                $('div[name="storeDiv"]').css("display", "block");
+                $('div[name="siteDiv"]').css("display", "none");
+            } else {
+                $('div[name="storeDiv"]').css("display", "none");
+                $('div[name="siteDiv"]').css("display", "block");
+                // $('#ppp').css("display", "block");         
+            }
+        })
+    });
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '172697884853316',
+            cookie: true,
+            status: true,
+            xfbml: true,
+            version: 'v11.0'
+        });
+
+        FB.AppEvents.logPageView();
+
+    };
+</script>
+<script src="js/facebook.js"></script>
+<script>
+    $('.needs-validation').submit(function (event) {
+        event.preventDefault();
+        if (event.target.id == "logInForm") {
+            var data = {
+                email: $(event.target).children("input[name='email']").val().toString(),
+                password: $(event.target).children("input[name='password']").val().toString(),
+                kind: "admin"
+            }
+            console.log("login")
+            normalLogin(data);
+        } else {
+            var data = {
+                email: $(event.target).children("input[name='email']").val().toString(),
+                password: $(event.target).children("input[name='password']").val().toString(),
+                name: $(event.target).children("input[name='name']").val().toString(),
+                kind: 'normal'
+            }
+            if ($('div[name="storeDiv"]').css("display") == "none") {
+                data.address = $('div[name="storeDiv"]').children("input[name='name']").val().toString();
+                data.tel = $('div[name="storeDiv"]').children("input[name='tel']").val().toString();
+                data.store = $('div[name="storeDiv"]').children("select[name='store']").val().toString();
+                data.kind = "store"
+
+            } else if ($('div[name="siteDiv"]').css("display") == "none") {
+                data.kind = "store"
+            }
+            normalSignUp(data)
+        }
+    });
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+<script src="/js/bar.js"></script>
+</html>

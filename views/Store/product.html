@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>綠Pro/Costco</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="/css/product.css" />
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id"
+        content="704955964578-h12ktncaj45noqmmb3q3hu9vrtkhh5ol.apps.googleusercontent.com">
+
+</head>
+
+<body class="costco_body container-fluid ">
+
+    <header class="row">
+        <div class="row">
+            <div class="col-md-2">
+                <a href="/">
+                    <img class="logo_img" alt="logo" src="/image/logo.png" style="max-width: 100%;">
+                </a>
+            </div>
+            <div class="col-md-7">
+                <!-- <div id="search_bar" class="input-group pt-2">
+                    <input type="text" id="sql_value" class="form-control" placeholder="search"
+                        aria-describedby="button-addon2">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                </div> -->
+            </div>
+            <div class="col-md-1">
+                <a class="bar-link" href="/">Home</a>
+            </div>
+
+            <div class="col-md-1">
+                <label id="identity">Identity</label> <!-- customer or merchants -->
+            </div>
+            <div class="col-md-1">
+                <label id="account_name">Account</label>
+            </div>
+        </div>
+    </header>
+    <div class=" centerDiv">
+        <div class="container-fluid">
+            <div class="row p-2">
+                <div id="storeTitle" class="row p-2 storeTitle">
+                    <%=storeTitle%>/ <%=nameTitle%>
+                </div>
+                <form class="mb-3 needs-validation" novalidate>
+                    <div class="row p-2">
+                        <div class="col-md-4">
+                            <label>Name</label>
+                            <input type="text" name="Mname" class="form-control mb-2 bold" placeholder="name" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Date</label>
+                            <input type="date" name="Mdate" class="form-control mb-2 bold" placeholder="xxxx/xx/xx"
+                                required>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Price</label>
+                            <input type="number" name="Mprice" class="form-control mb-2 bold" placeholder="price"
+                                required>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Numbers</label>
+                            <input type="number" name="Mnumber" class="form-control mb-2 bold" placeholder="number"
+                                required>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Picture</label>
+                            <input type="text" name="Mpic" class="form-control mb-2 bold" placeholder="picture">
+                        </div>
+                    </div>
+
+                    <div class="btn-group w-100" role="group">
+                        <button type="button" class="btn btn-outline-primary ">add</button>
+                        <button type="button" class="btn btn-outline-primary  ">recover</button>
+                        <button type="submit" class="btn btn-outline-primary ">Save</button>
+                    </div>
+                </form>
+            </div>
+            <div class="listDiv">
+                <div class="row p-2 ">
+                    <div class="col">
+                        <div class="list-group">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="list-group">
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <div class="main_background">
+
+    </div>
+    <footer>
+        <div>
+            <p>
+                &copy; 2021. By Green Pro Inc.
+            </p>
+        </div>
+    </footer>
+</body>
+<script>
+    var listID=null
+    $( document ).ready(function() {
+        console.log( "document loaded" );
+    });
+ 
+    $( window ).on( "load", function() {
+        console.log( "window loaded" );
+        ///$('#modifyModal').modal('show');
+        $.ajax({
+            url: '/store/manageProduct',
+            data: JSON.stringify({
+                address: "台南市永康區中山南路282之5號"
+            }),
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json;charset=utf-8",
+            success: function (returnData) {
+                const listgroup = document.getElementsByClassName('list-group');
+                const space = Math.ceil(returnData.length / listgroup.length)
+                // console.log(document.getElementsByClassName('list-group'))
+                for (let y = 0, i = 0; y * space + i < returnData.length; ++i) {
+                    if (i > space) {
+                        y++;
+                        i = 0;
+                    }
+                    newinput = `<a href="#" id=a_${returnData[y * space + i].id} 
+                    class=" mb-2 d-flex bd-highlight productList list-group-item list-group-item-action list-group-item-light">
+                    <!-- <div class="me-auto  bd-highlight"> -->
+                        <img class=" me-auto bd-highlight product_img" alt="product"
+                            src="${returnData[y * space + i].pic}">
+                    <!-- </div> -->
+                    <label name='name' class="me-auto p-1 bd-highlight ">${returnData[y * space + i].name}</label>
+                    <label name='date' class="me-auto p-1 bd-highlight">${returnData[y * space + i].date}</label>
+                    <label name='price' class="me-auto p-1 bd-highlight">${returnData[y * space + i].price}元</label>
+                    <label name='number' class="me-auto p-1 bd-highlight">${returnData[y * space + i].number}個</label>
+                    <button  class="btn btn-primary m-2" type="button" id=mbtn${returnData[y * space + i].id}>Modify</button>
+                    <button  class="btn btn-danger m-2" type="button" id=dbtn_${returnData[y * space + i].id}>Delete</button>
+                </a>`
+                      listgroup[y].innerHTML += newinput;
+                      $("storeTitle").text("<b>Some</b> new text.");
+                }
+                $(".btn").on('click', (event) => {
+                    listID=event.target.id.toString().match(/(\d+)/)[0]
+                    console.log(listID)
+                    $('input[name="Mname"]').val($(event.target).siblings("label[name='name']").text())
+                   // $('input[name="Mdate"]').val(new Date($(event.target).siblings("label[name='date']").text()))
+                    $('input[name="Mdate"]').val($(event.target).siblings("label[name='date']").text())
+                    $('input[name="Mprice"]').val($(event.target).siblings("label[name='price']").text().match(/(\d+)/)[0])
+                    $('input[name="Mnumber"]').val($(event.target).siblings("label[name='number']").text().match(/(\d+)/)[0])
+                    $('input[name="Mpic"]').val($(event.target).siblings("label[name='name']").text())
+                })
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.status);
+                console.log(thrownError);
+            }
+        });
+    });
+    $(document).ready(function () {
+        
+
+    });
+
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+        console.log(forms)
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+</html>

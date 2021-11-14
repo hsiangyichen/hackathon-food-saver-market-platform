@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- Responsive viewport meta tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <meta name="google-signin-client_id"
+        content="704955964578-h12ktncaj45noqmmb3q3hu9vrtkhh5ol.apps.googleusercontent.com">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v11.0"
+        nonce="BJxM7W7J"></script>
+    <title>綠Pro</title>
+</head>
+<script>
+    var googleUser = {};
+    var startApp = function () {
+        gapi.load('auth2', function () {
+            // Retrieve the singleton for the GoogleAuth library and set up the client.
+            auth2 = gapi.auth2.init({
+                client_id: '704955964578-h12ktncaj45noqmmb3q3hu9vrtkhh5ol.apps.googleusercontent.com',
+                cookiepolicy: 'single_host_origin',
+                // Request scopes in addition to 'profile' and 'email'
+                //scope: 'additional_scope'
+            });
+           // attachSignin(document.getElementById('customBtn'));
+            attachSignin(document.getElementById('customBtn'));
+            attachSignin(document.getElementById('testBtn'));
+        });
+    };
+
+    function attachSignin(element) {
+        auth2.attachClickHandler(element, {},
+            function (googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile
+                    .getEmail()); // This is null if the 'email' scope is not present.
+                document.getElementById('name').innerText = "Signed in: " +
+                    googleUser.getBasicProfile().getName();
+            },
+            function (error) {
+                //alert(JSON.stringify(error, undefined, 2));
+            });
+    }
+</script>
+
+<body>
+    <!-- LoginModal -->
+    <div style="margin-top: 80px;" class="modal fade" id="loginModal" data-bs-backdrop="static" data-bs-keyboard="false"
+        tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="loginCustomerBtn" autocomplete="off"
+                        checked>
+                    <label class="btn btn-outline-secondary toggle-btn" for="loginCustomerBtn">顧客</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="loginStoreBtn" autocomplete="off">
+                    <label class="btn btn-outline-secondary toggle-btn" for="loginStoreBtn">合作店家</label>
+                </div>
+                <div class="modal-body">
+                    <!-- google -->
+                    <div id="gSignInWrapper">
+                        <div id="customBtn" class="customGPlusSignIn siteLoginBtn">
+                            <div class="center">
+                                <span class="google mx-auto"></span>
+                                <span class="buttonText mx-auto googleText">以google帳戶登入</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="name"></div>
+
+                    <script>
+                        startApp();
+                    </script>
+                    <!-- facebook -->
+                    <div>
+                        <div  class=" siteLoginBtn" onclick="facebook_login()">
+                            <div class="center">
+                                <span class="facebook mx-auto"></span>
+                                <span class="buttonText mx-auto facebookText">以Facebook帳戶登入</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin:5px; font-weight:bold">or</div>
+                    <form class="mb-3 needs-validation" novalidate>
+                        <input type="email" class="form-control mb-2 bold" placeholder="email" required>
+                        <input type="password" class="form-control mb-2 bold" placeholder="password" required>
+                        <button type="submit" class="btn btn-dark w-100 mb-2">註冊</button>
+                    </form>
+                    <div style="text-align: center; margin:5px; font-weight:bold">
+                        <span>Not have an account yet?</span>
+                        <span><a href="#" onclick="changeType()">Sign Up</a></span>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- signUpModal -->
+    <div style="margin-top: 80px; " class="modal fade" id="signUpModal" data-bs-backdrop="static"
+        data-bs-keyboard="false" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="btnradio" id="customerBtn" autocomplete="off" checked>
+                    <label class="btn btn-outline-secondary toggle-btn" for="customerBtn">顧客</label>
+                    <input type="radio" class="btn-check" name="btnradio" id="storeBtn" autocomplete="off">
+                    <label class="btn btn-outline-secondary toggle-btn" for="storeBtn">合作店家</label>
+                </div>
+                <div class="modal-body">
+                    <!-- google -->
+                    <div id="gSignInWrapper">
+                        <div id="testBtn" class="customGPlusSignIn siteLoginBtn">
+                            <div class="center">
+                                <span class="google mx-auto"></span>
+                                <span class="buttonText mx-auto googleText">以google帳戶註冊</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="name"></div>
+
+                    <script>
+                        startApp();
+                    </script>
+
+                    <!-- facebook -->
+                    <div>
+                        <div  class=" siteLoginBtn" onclick="facebook_login()">
+                            <div class="center">
+                                <span class="facebook mx-auto"></span>
+                                <span class="buttonText mx-auto facebookText">以Facebook帳戶註冊</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin:5px; font-weight:bold">or</div>
+                    <form class="mb-3 needs-validation" novalidate>
+                        <input type="email" class="form-control mb-2 bold" placeholder="email" required>
+                        <input type="password" class="form-control mb-2 bold" placeholder="password" required>
+                        <input type="text" class="form-control mb-2 bold" placeholder="name" required>
+                        <div name="storeDiv" style="display: none;">
+                            <input type="text" class="form-control mb-2 bold" placeholder="address" required>
+                            <input type="text" class="form-control mb-2 bold" maxlength="10" placeholder="tel" required>
+                            <select class="form-select form-control mb-2 bold" id="store" name="store" required>
+                                <option value="costco" selected>costco</option>
+                                <option value="7-11">7-11</option>
+                                <option value="family-mart">Family-Mart</option>
+                                <option value="全聯">全聯</option>
+                            </select>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck">
+                                Agree to terms and conditions
+                            </label>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100 mb-2">註冊</button>
+                    </form>
+
+                    <div style="text-align: center; margin:5px; font-weight:bold">
+                        <span>Already have an account?</span>
+                        <span><a href="#" onclick="changeType()">Log in</a></span>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <div>
+            <a href="#">
+                <img class="logo_img" alt="logo" src="image/logo.png">
+            </a>
+            <!--
+                    Available online:
+                    https://www.pinterest.com/pin/ATnC6Tu_-wqojHlwLGb10OH3ri6EJyypKDBFSyw5P8Y1DGfjSIMghzk/
+                    Accessed: 18 Apr 2020
+                -->
+            <a class="bar-link" href="register.html" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#loginModal">Log In/Sign Up</a>
+            <a class="bar-link" href="#about_us">About Us</a> <!-- Add a link to a new page -->
+            <a class="bar-link" href="#store_part">Store</a>
+            <a class="bar-link" href="#">Home</a>
+       
+        </div>
+    </header>
+    <main>
+        <div>
+            <img id="focal-point" alt="home_page_background" src="image/home_page_background.png">
+        </div>
+        <div id="store_part">
+            <h1>
+                合作店家
+            </h1>
+        </div>
+        <!-- Contains three parts to briefly explain the sources we have (Learning Center, Experts, Tutors) -->
+        <div id="store_grid">
+            <!--
+					Available online:
+					https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v591-mynt-32-handdrawnlightbulbs_1.jpg?auto=format&bg=transparent&con=3&cs=srgb&dpr=1&fm=jpg&ixlib=php-3.1.0&mark=rawpixel-watermark.png&markalpha=90&markpad=13&markscale=10&markx=25&q=75&usm=15&vib=3&w=1200&s=8caac1cec91acbfa50232776ff21a74f
+					Accessed: 18 Apr 2020
+						
+				<img class="bulb_img" alt="bulb" src="image/bulb.png">-->
+            <div class="grid-item">
+                <img class="coop_img" alt="costco"
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/59/Costco_Wholesale_logo_2010-10-26.svg">
+            </div>
+            <!--
+							Available online:
+							https://i.pinimg.com/474x/22/20/74/2220743eb7227d38c628d14689ed21e3.jpg
+							Accessed: 18 Apr 2020
+							
+					<img id="paper_plane_img" alt="paper plane" src="image/paper_plane.png">-->
+            <div class="grid-item">
+                <img class="coop_img" alt="全聯"
+                    src="https://scontent-tpe1-1.xx.fbcdn.net/v/t31.18172-8/29744888_1971961839541119_2572139267371021556_o.png?_nc_cat=1&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=slK0l8lVyzwAX_NOWkj&_nc_ht=scontent-tpe1-1.xx&oh=5cdd1347635fea33e0bce8e5a6c2f3b5&oe=60F24D8B">
+
+            </div>
+
+            <div class="grid-item">
+                <img class="coop_img" alt="ok"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/OK_Taiwan.svg/225px-OK_Taiwan.svg.png">
+
+            </div>
+            <div class="grid-item">
+                <a class="costco-link" href="costco">Costco</a>
+            </div>
+            <div class="grid-item">
+                <a class="全家-link" href="store.html">全家</a>
+            </div>
+            <div class="grid-item">
+                <a class="ok-link" href="store.html">OK</a>
+            </div>
+
+        </div>
+
+        <div id="about_us">
+            <section>
+                <h3>About Us</h3>
+                <p>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nulla
+                    cursus commodo massa eget pharetra. Nullam scelerisque lectus eget scelerisque facilisis. Vivamus
+                    interdum
+                    turpis nec gravida mattis. Nulla pulvinar diam sit amet arcu vestibulum facilisis. Proin pretium
+                    urna et enim
+                    suscipit pretium. Nam imperdiet gravida est, ac blandit nibh fringilla nec.
+                </p>
+            </section>
+        </div>
+        <div class="container" id="contact">
+            <div class="row">
+                <div class="col">
+                    <h3>Address</h3>
+                    <p>
+                        Phone: (902)7043539<br>Instagram: E-LearningABC<br>Facebook: E-Learning @Canada<br>Email:
+                        E-LearningABC@dal.ca
+                    </p>
+                </div>
+                <div class="col">
+                    <h3>Follow Me</h3>
+                    <div class="icon">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-google"></a>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3>Quick Links</h3>
+                    <hr>
+                    <a href="#">
+                        <!--
+							Available online:
+							https://cdn0.iconfinder.com/data/icons/interface-line-4/48/Arrow_right_interface-512.png
+							Accessed: 18 Apr 2020
+						-->
+                        <p><img class="arrow_img" src="image/arrow.png" alt="arrow"></p>
+                    </a>
+                </div>
+            </div>
+            <!--
+				Available online:
+				https://image.freepik.com/free-vector/cute-animals-cartoon-doodle-card-poster-wallpaper_40564-273.jpg
+				Accessed: 18 Apr 2020
+			-->
+            <img class="animal_img" alt="animals" src="image/animals.png">
+        </div>
+
+    </main>
+    <footer>
+        <div>
+            <p>
+                &copy; 2021. By Green Pro Inc.
+            </p>
+        </div>
+    </footer>
+</body>
+<script>
+    var isLogin = true;
+    changeType = () => {
+        isLogin = !isLogin;
+        if (isLogin) {
+            $('#signUpModal').modal('hide');
+            $('#loginModal').modal('show');
+        } else {
+            $('#signUpModal').modal('show');
+            $('#loginModal').modal('hide');
+        }
+    }
+    $(document).ready(function () {
+        $(".toggle-btn").on('click', (event) => {
+            console.log(event.target.getAttribute('for'))
+            event.target.getAttribute('for').toString().trim() == "storeBtn" ?
+                $('div[name="storeDiv"]').css("display", "block") : $('div[name="storeDiv"]').css(
+                    "display", "none");
+        })
+    });
+
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '172697884853316',
+            cookie: true,
+            xfbml: true,
+            version: 'v11.0'
+        });
+
+        FB.AppEvents.logPageView();
+
+    };
+
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+<script>
+    function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
+        // The response object is returned with a status field that lets the
+        // app know the current login status of the persopren.
+        // Full docs on the response object can be found in the documentation
+        // for FB.getLoginStatus().
+        if (response.status === 'connected') {
+            // Logged into your app and Facebook.
+            login(response.authResponse.accessToken);
+        } else if (response.status === 'not_authorized') {
+            // The person is logged into Facebook, but not your app.
+            console.log('The person is logged into Facebook, but not your app');
+        } else {
+            // The person is not logged into Facebook, so we're not sure if
+            // they are logged into this app or not.
+            console.log("The person is not logged into Facebook");
+        }
+    }
+
+    function checkLoginState() {
+        FB.getLoginStatus(function (response) {
+            statusChangeCallback(response);
+        });
+    }
+
+    function facebook_login() {
+        FB.login(function (response) {
+            console.log(response.authResponse.accessToken)
+            if (response.authResponse) {
+                console.log('Welcome!  Fetching your information.... ');
+                access_token = response.authResponse.accessToken; //get access token
+                user_id = response.authResponse.userID; //get FB UID
+
+                FB.api(`/me?fields=name,email &access_token=${response.authResponse.accessToken}`, function (
+                    response) {
+                    console.log(response)
+                    user_email = response.email; //get user email
+                    // you can store this data into your database             
+                });
+
+            } else {
+                //user hit cancel button
+                console.log('User cancelled login or did not fully authorize.');
+
+            }
+        }, {
+            scope: 'public_profile,email'
+        });
+    }
+</script>
+<script>
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+                        $('#signUpModal').modal('hide');
+                        $('#loginModal').modal('hide');
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
+
+</html>
